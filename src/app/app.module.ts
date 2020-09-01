@@ -18,6 +18,9 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { reducers } from './reducers';
 import { TodoComponent } from './containers/todo/todo.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { CounterEffects } from './effects/counter.effects';
+import { EffectsModule } from '@ngrx/effects';
+import { MediaModule } from './features/media/media.module';
 
 @NgModule({
   declarations: [
@@ -34,9 +37,11 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
   ],
   imports: [
     BrowserModule,
+    MediaModule,
     AppRoutingModule,
     StoreModule.forRoot(reducers),
-    StoreDevtoolsModule.instrument()
+    StoreDevtoolsModule.instrument(),
+    EffectsModule.forRoot([CounterEffects])
   ],
   providers: [CommunicationsService],
   bootstrap: [AppComponent]
