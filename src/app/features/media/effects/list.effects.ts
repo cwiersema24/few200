@@ -3,15 +3,27 @@ import { HttpClient } from '@angular/common/http';
 import * as actions from '../actions/list.actions';
 import { environment } from '../../../../environments/environment';
 import { Injectable } from '@angular/core';
-import { switchMap, map, catchError } from 'rxjs/operators';
+import { switchMap, map, catchError, filter } from 'rxjs/operators';
 import { ListEntity } from '../reducers/list.reducer';
 import { of } from 'rxjs';
 
 @Injectable()
 export class ListEffects {
 
+  // we we get a mediaItemRemoved -> send it to the api -> (nothing! | mediaItemRemovedFailure)
   removeItem$ = createEffect(() =>
-    this.actions$);
+    this.actions$.pipe(
+      ofType(actions.removeMediaItem),
+      switchMap((item) => this.client.delete(environment.apiUrl + `media/${item.payload.id}`)
+        .pipe(
+          filter(() => false),
+          map(() => ({ type: 'noop' })),
+          catchError((e) => of(actions.addedMediaFailure({ payload: item.payload, errorMessage: `Failed To Delete ${item.payload.title} ` }))),
+        )
+      )
+    ) // but I mean maybe.
+  );
+
   addItem$ = createEffect(() =>
     this.actions$.pipe(
       ofType(actions.addedMediaItem),

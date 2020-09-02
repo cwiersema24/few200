@@ -45,5 +45,10 @@ export const removeMediaItem = createAction(
 
 export const removedMediaItemFailure = createAction(
   '[media] media item reomoved failed',
+  props<{ payload: ListEntity, errorMessage: string }>()
+);
+
+export const makeUpperCaseTitle = createAction(
+  '[media] make upper case title',
   props<{ payload: ListEntity }>()
 );
