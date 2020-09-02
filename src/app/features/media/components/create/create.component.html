@@ -14,7 +14,7 @@
   <div class="form-group">
     <label for="recommendedBy">Recommended By</label>
     <input class="form-control"
-           formControlName="recomendedBy"
+           formControlName="recommendedBy"
            name="recommendedBy">
     <div class="alert alert-danger"
          *ngIf="recommendedBy.invalid && (recommendedBy.dirty || recommendedBy.touched)">
@@ -28,10 +28,10 @@
             formControlName="format"
             name="format">
       <option value=""></option>
-      <option value="book">Book</option>
-      <option value="show">Show</option>
-      <option value="movie">Movie</option>
-      <option value="game">Game</option>
+      <option value="Book">Book</option>
+      <option value="Show">Show</option>
+      <option value="Movie">Movie</option>
+      <option value="Game">Game</option>
     </select>
     <div class="alert alert-danger"
          *ngIf="format.invalid && (format.dirty || format.touched)">

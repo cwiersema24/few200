@@ -1,3 +1,10 @@
 .card{
   margin-bottom: 20px;
 }
+button,  button:hover {
+  color: blue;
+  text-decoration: none;
+}
+button:hover {
+  background-color: darkred;
+}
