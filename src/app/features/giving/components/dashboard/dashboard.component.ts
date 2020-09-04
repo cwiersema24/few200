@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { DashboardSummary } from '../../models';
+import { DashboardSummary } from '../../model/dashboard';
 import { Store, select } from '@ngrx/store';
-import { MediaState2 } from '../../reducers/list.reducer';
+import { GivingListState } from '../../reducers/list.reducer';
 import { selectDashboardModel } from '../../reducers';
 
 @Component({
@@ -12,7 +12,7 @@ import { selectDashboardModel } from '../../reducers';
 })
 export class DashboardComponent implements OnInit {
   model$: Observable<DashboardSummary>;
-  constructor(private store: Store<MediaState2>) { }
+  constructor(private store: Store<GivingListState>) { }
 
   ngOnInit(): void {
     this.model$ = this.store.pipe(select(selectDashboardModel));

@@ -9,7 +9,7 @@ export interface ListEntity {
   format: string;
 }
 
-export interface MediaState extends EntityState<ListEntity> {
+export interface MediaState2 extends EntityState<ListEntity> {
 
 }
 
@@ -37,7 +37,7 @@ const reducerFunction = createReducer(
   on(actions.makeUpperCaseTitle, (s, a) => adapter.updateOne({ id: a.payload.id, changes: { title: a.payload.title.toUpperCase() } }, s))
 );
 
-export function reducer(state: MediaState = initialState, action: Action): MediaState {
+export function reducer(state: MediaState2 = initialState, action: Action): MediaState2 {
   return reducerFunction(state, action);
 }
 

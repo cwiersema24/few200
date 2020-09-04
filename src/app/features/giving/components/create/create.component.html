@@ -1,0 +1,58 @@
+<form [formGroup]="form"
+      (ngSubmit)="submit()">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input class="form-control"
+           formControlName="name"
+           name="name">
+    <div class="alert alert-danger"
+         *ngIf="name.invalid && (name.dirty || name.touched)">
+      <p *ngIf="name.errors.required">Name is Required</p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="holiday">Holiday</label>
+    <input class="form-control"
+           formControlName="holiday"
+           name="holiday">
+    <div class="alert alert-danger"
+         *ngIf="holiday.invalid && (holiday.dirty || holiday.touched)">
+      <p *ngIf="holiday.errors.required">Holiday is Required</p>
+
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="date">Date of Holiday</label>
+    <input type="date"
+           class="form-control"
+           formControlName="date"
+           name="date">
+    <div class="alert alert-danger"
+         *ngIf="date.invalid && (date.dirty || date.touched)">
+      <p *ngIf="date.errors.required">When is the Holiday.</p>
+    </div>
+    <div class="form-check form-check-inline">
+      <label class="form-check-label"
+             for="needsCard">
+        <input type="checkbox"
+               class="form-check-input"
+               name="needsCard"
+               formControlName="needsCard"
+               id="needsCard">
+        Needs Card</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <label class="form-check-label"
+             for="needsGift">
+        <input type="checkbox"
+               class="form-check-input"
+               name="needsGift"
+               formControlName="needsGift"
+               id="needsGift">
+        Needs Gift</label>
+    </div>
+  </div>
+  <button type="submit"
+          [disabled]="form.invalid"
+          class="btn btn-primary">Add Recipient</button>
+</form>

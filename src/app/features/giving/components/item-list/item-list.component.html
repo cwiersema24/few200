@@ -1,0 +1,28 @@
+<div class="card"
+     *ngFor="let item of items">
+  <div class="card-body">
+    <h5 class="card-title">{{ item.name }} Celebrates {{item.holiday}}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">on {{ item.date | date:'mediumDate' }}</h6>
+    <div class="form-check form-check-inline"
+         *ngIf="item.needsCard">
+      <input type="checkbox"
+             class="form-check-input"
+             id="needsCard"
+             [checked]="item.cardCompleted"
+             (change)="markCardComplete(item)">
+      <label class="form-check-label"
+             for="needsCard">Card</label>
+    </div>
+    <div class="form-check form-check-inline"
+         *ngIf="item.needsGift">
+      <input type="checkbox"
+             class="form-check-input"
+             id="needsGift"
+             [checked]="item.giftCompleted"
+             (change)="markGiftComplete(item)">
+      <label class="form-check-label"
+             for="needsGift">Gift</label>
+    </div>
+  </div>
+</div>
+<pre>{{items | json}}</pre>

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import * as actions from '../../actions/list.actions';
 import { Store } from '@ngrx/store';
-import { MediaState } from '../../reducers/list.reducer';
+import { MediaState2 } from '../../reducers/list.reducer';
 
 @Component({
   selector: 'app-create',
@@ -11,7 +11,7 @@ import { MediaState } from '../../reducers/list.reducer';
 })
 export class CreateComponent implements OnInit {
   form: FormGroup;
-  constructor(private formBuilder: FormBuilder, private store: Store<MediaState>) { }
+  constructor(private formBuilder: FormBuilder, private store: Store<MediaState2>) { }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({

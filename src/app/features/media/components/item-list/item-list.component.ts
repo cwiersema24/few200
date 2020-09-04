@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { MediaListItem } from '../../models';
-import { MediaState, ListEntity } from '../../reducers/list.reducer';
+import { MediaState2, ListEntity } from '../../reducers/list.reducer';
 import { Store } from '@ngrx/store';
 import { removeMediaItem, makeUpperCaseTitle } from '../../actions/list.actions';
 
@@ -13,7 +13,7 @@ import { removeMediaItem, makeUpperCaseTitle } from '../../actions/list.actions'
 export class ItemListComponent implements OnInit {
 
   @Input() items: MediaListItem[] = [];
-  constructor(private store: Store<MediaState>) { }
+  constructor(private store: Store<MediaState2>) { }
 
   ngOnInit(): void {
   }

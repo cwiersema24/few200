@@ -21,6 +21,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CounterEffects } from './effects/counter.effects';
 import { EffectsModule } from '@ngrx/effects';
 import { MediaModule } from './features/media/media.module';
+import { GivingModule } from './features/giving/giving.module';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { MediaModule } from './features/media/media.module';
   imports: [
     BrowserModule,
     MediaModule,
+    GivingModule,
     AppRoutingModule,
     StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument(),

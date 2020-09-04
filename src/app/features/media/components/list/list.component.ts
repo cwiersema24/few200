@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MediaState } from '../../reducers/list.reducer';
+import { MediaState2 } from '../../reducers/list.reducer';
 import { Observable } from 'rxjs';
 import { MediaListItem } from '../../models';
 import { selectMediaList } from '../../reducers';
@@ -13,7 +13,7 @@ import { Store, select } from '@ngrx/store';
 export class ListComponent implements OnInit {
 
   items$: Observable<MediaListItem[]>;
-  constructor(private store: Store<MediaState>) { }
+  constructor(private store: Store<MediaState2>) { }
 
   ngOnInit(): void {
     this.items$ = this.store.pipe(select(selectMediaList));

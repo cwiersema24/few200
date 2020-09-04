@@ -6,7 +6,7 @@ export const featureName = 'mediaFeature';
 import * as fromUIHints from './ui-hints.reducer';
 
 export interface MediaState {
-  list: fromList.MediaState;
+  list: fromList.MediaState2;
   uiHints: fromUIHints.UiHintsState;
 }
 

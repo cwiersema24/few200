@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-2">
+    <ul class="nav nav-pills flex-column">
+      <li class="nav-item">
+        <a class="nav-link"
+           [routerLinkActive]="['active']"
+           [routerLink]="['dashboard']">Overview</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"
+           [routerLinkActive]="['active']"
+           [routerLink]="['upcomming']">Upcoming Holidays</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"
+           [routerLinkActive]="['active']"
+           [routerLink]="['create']">Enter a New Recipient</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"
+           [routerLinkActive]="['active']"
+           [routerLink]="['past']">Past Holidays</a>
+      </li>
+    </ul>
+  </div>
+  <div class="col">
+    <router-outlet></router-outlet>
+  </div>
+</div>
