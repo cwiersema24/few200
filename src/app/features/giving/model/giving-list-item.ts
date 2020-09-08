@@ -5,6 +5,6 @@ export interface GivingListItem {
   date: Date;
   needsCard: boolean;
   needsGift: boolean;
-  cardCompleted?: boolean;
-  giftCompleted?: boolean;
+  cardCompleted: boolean;
+  giftCompleted: boolean;
 }

@@ -33,9 +33,14 @@ const initialState: GivingListState = {
 
 const reducerFunction = createReducer(
   initialState,
+  on(actions.loadGivingDataSucceeded, (s, a) => adapter.setAll(a.payload, s)),
   on(actions.completedCard, (s, a) => adapter.updateOne({ id: a.payload.id, changes: { cardCompleted: !a.payload.cardCompleted } }, s)),
   on(actions.completedGift, (s, a) => adapter.updateOne({ id: a.payload.id, changes: { giftCompleted: !a.payload.giftCompleted } }, s)),
-  on(actions.addedGivingItem, (s, a) => adapter.addOne(a.payload, s))
+  on(actions.addedGivingItem, (s, a) => adapter.addOne(a.payload, s)),
+  on(actions.addedGivingSucceeded, (s, a) => {
+    const tempState = adapter.removeOne(a.tempId, s);
+    return adapter.addOne(a.payload, tempState);
+  })
 );
 
 export function reducer(state: GivingListState = initialState, action: Action): GivingListState {

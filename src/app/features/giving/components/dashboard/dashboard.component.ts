@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { DashboardSummary } from '../../model/dashboard';
 import { Store, select } from '@ngrx/store';
 import { GivingListState } from '../../reducers/list.reducer';
-import { selectDashboardModel } from '../../reducers';
+import { selectDashboardModel, GivingState } from '../../reducers';
 
 @Component({
   selector: 'app-dashboard',

@@ -3,14 +3,14 @@ import { Observable } from 'rxjs';
 import { GivingListItem } from '../../model';
 import { Store, select } from '@ngrx/store';
 import { GivingListState } from '../../reducers/list.reducer';
-import { getPastList } from '../../reducers';
+import { getPastList, GivingState } from '../../reducers';
 import { ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-display-past',
   templateUrl: './display-past.component.html',
   styleUrls: ['./display-past.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.Default
 })
 export class DisplayPastComponent implements OnInit {
   items$: Observable<GivingListItem[]>;

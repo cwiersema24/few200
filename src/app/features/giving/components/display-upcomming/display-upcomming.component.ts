@@ -3,14 +3,14 @@ import { Observable } from 'rxjs';
 import { GivingListItem } from '../../model';
 import { Store, select } from '@ngrx/store';
 import { GivingListState } from '../../reducers/list.reducer';
-import { getUpcommingList } from '../../reducers';
+import { getUpcommingList, GivingState } from '../../reducers';
 import { ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-display-upcomming',
   templateUrl: './display-upcomming.component.html',
   styleUrls: ['./display-upcomming.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.Default
 })
 export class DisplayUpcommingComponent implements OnInit {
   items$: Observable<GivingListItem[]>;

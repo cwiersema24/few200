@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/fo
 import { GivingListState } from '../../reducers/list.reducer';
 import { Store } from '@ngrx/store';
 import * as actions from '../../actions/list.actions';
+import { GivingState } from '../../reducers';
 
 @Component({
   selector: 'app-create',
