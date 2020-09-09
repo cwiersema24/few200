@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { GivingListItem } from '../../model';
 import { Store } from '@ngrx/store';
-import { ListEntity, GivingListState } from 'src/app/features/giving/reducers/list.reducer';
+import { ListEntity, GivingState } from 'src/app/features/giving/reducers/list.reducer';
 import { completedCard, completedGift } from '../../actions/list.actions';
-import { GivingState } from '../../reducers';
+
 
 @Component({
   selector: 'app-item-list',
@@ -13,7 +13,7 @@ import { GivingState } from '../../reducers';
 export class ItemListComponent implements OnInit {
 
   @Input() items: GivingListItem[] = [];
-  constructor(private store: Store<GivingListState>) { }
+  constructor(private store: Store<GivingListItem>) { }
 
   ngOnInit(): void {
   }

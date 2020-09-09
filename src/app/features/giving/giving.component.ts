@@ -9,13 +9,11 @@ import { Observable } from 'rxjs';
   styleUrls: ['./giving.component.scss']
 })
 export class GivingComponent implements OnInit {
-  filter$: Observable<Date>;
-  loaded$: Observable<boolean>;
-  constructor(private store: Store<GivingState>) { }
+
+  constructor() { }
 
   ngOnInit(): void {
-    // this.loaded$ = this.store.pipe(
-    //   select(selec);
+
   }
 
 }

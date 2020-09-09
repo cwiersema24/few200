@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
-import { GivingListState } from '../../reducers/list.reducer';
+import { GivingState } from '../../reducers/list.reducer';
 import { Store } from '@ngrx/store';
 import * as actions from '../../actions/list.actions';
-import { GivingState } from '../../reducers';
+
 
 @Component({
   selector: 'app-create',
@@ -12,7 +12,7 @@ import { GivingState } from '../../reducers';
 })
 export class CreateComponent implements OnInit {
   form: FormGroup;
-  constructor(private formBuilder: FormBuilder, private store: Store<GivingListState>) { }
+  constructor(private formBuilder: FormBuilder, private store: Store<GivingState>) { }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({

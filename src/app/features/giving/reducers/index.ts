@@ -1,11 +1,12 @@
 import { createSelector, createFeatureSelector, ActionReducerMap } from '@ngrx/store';
-export const featureName = 'givingFeature';
 import * as fromList from './list.reducer';
 import * as models from '../model/';
 import { GivingListItem } from '../model';
 
+export const featureName = 'givingFeature';
+
 export interface GivingState {
-  list: fromList.GivingListState;
+  list: fromList.GivingState;
 }
 
 export const reducers: ActionReducerMap<GivingState> = {
@@ -31,29 +32,17 @@ const selectGivingListUnfiltered = createSelector(
   selectAllListItems,
   m => [...m.sort((lhs: GivingListItem, rhs: GivingListItem) => {
     if (lhs.date > rhs.date) {
-      console.log('selectGivingListUnfiltered');
       return 1;
     }
     if (lhs.date < rhs.date) {
       return -1;
     }
     return 0;
-  }).map(r => ({ ...r }))] as models.GivingListItem[]
+  })]// .map(r => ({ ...r }))] as models.GivingListItem[]
 );
 
 
 // TODO: We need a selector that returns a MediaListItem[]
-export const selectDashboardModel = createSelector(
-  selectGivingListUnfiltered,
-  m => {
-    console.log('dashboard');
-    return {
-      numberOfUpcomming: m.filter(b => b.date > new Date()).length,
-      numberOfCards: m.filter(b => b.needsCard === true && b.cardCompleted === false).length,
-      numberOfGifts: m.filter(b => b.needsGift === true && b.giftCompleted === false).length,
-    } as models.DashboardSummary;
-  }
-);
 
 export const getUpcommingList = createSelector(
   selectAllListItems,
@@ -68,3 +57,15 @@ export const getPastList = createSelector(
     return list.filter(item => item.date < new Date());
   }
 );
+
+export const selectDashboardModel = createSelector(
+  selectGivingListUnfiltered,
+  m => {
+    return {
+      numberOfUpcomming: m.filter(b => b.date > new Date()).length,
+      numberOfCards: m.filter(b => b.needsCard === true && b.cardCompleted === false).length,
+      numberOfGifts: m.filter(b => b.needsGift === true && b.giftCompleted === false).length,
+    } as models.DashboardSummary;
+  }
+);
+

@@ -2,8 +2,8 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Observable } from 'rxjs';
 import { GivingListItem } from '../../model';
 import { Store, select } from '@ngrx/store';
-import { GivingListState } from '../../reducers/list.reducer';
-import { getPastList, GivingState } from '../../reducers';
+import { GivingState } from '../../reducers/list.reducer';
+import { getPastList } from '../../reducers';
 import { ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
@@ -15,7 +15,7 @@ import { ChangeDetectionStrategy } from '@angular/core';
 export class DisplayPastComponent implements OnInit {
   items$: Observable<GivingListItem[]>;
   item: GivingListItem[];
-  constructor(private store: Store<GivingListState>, private change: ChangeDetectorRef) { }
+  constructor(private store: Store<GivingState>, private change: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     this.items$ = this.store.pipe(select(getPastList));

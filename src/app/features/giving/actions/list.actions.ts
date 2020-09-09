@@ -11,7 +11,7 @@ export const addedGivingItem = createAction(
       payload: {
         name, holiday, date, needsCard, needsGift,
         cardCompleted: false, giftCompleted: false,
-        id: (currentId++).toString(),
+        id: 'Temp' + currentId++
       } as ListEntity
     })
 );
