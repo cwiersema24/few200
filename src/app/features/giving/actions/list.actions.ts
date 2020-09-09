@@ -7,11 +7,11 @@ let currentId = 0;
 export const addedGivingItem = createAction(
   '[giving] giving holiday created',
   ({ name, holiday, date, needsCard, needsGift }:
-    { name: string, holiday: string, date: Date, needsCard: boolean, needsGift: boolean }) => ({
+    { name: String, holiday: String, date: Date, needsCard: Boolean, needsGift: Boolean }) => ({
       payload: {
         name, holiday, date, needsCard, needsGift,
         cardCompleted: false, giftCompleted: false,
-        id: 'Temp' + currentId++
+        id: 'TEMP' + currentId++
       } as ListEntity
     })
 );

@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, ViewEncapsulation } from '@angular/core';
 import { Observable } from 'rxjs';
 import { GivingListItem } from '../../model';
 import { Store, select } from '@ngrx/store';
@@ -10,7 +10,7 @@ import { ChangeDetectionStrategy } from '@angular/core';
   selector: 'app-display-past',
   templateUrl: './display-past.component.html',
   styleUrls: ['./display-past.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Default
+  encapsulation: ViewEncapsulation.None
 })
 export class DisplayPastComponent implements OnInit {
   items$: Observable<GivingListItem[]>;
@@ -19,7 +19,7 @@ export class DisplayPastComponent implements OnInit {
 
   ngOnInit(): void {
     this.items$ = this.store.pipe(select(getPastList));
-    this.items$.subscribe(a => { this.item = a; this.change.markForCheck(); });
+    // this.items$.subscribe(a => { this.item = a; this.change.markForCheck(); });
   }
 
 }

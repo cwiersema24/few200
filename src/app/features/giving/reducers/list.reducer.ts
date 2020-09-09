@@ -1,7 +1,7 @@
 import { EntityState, createEntityAdapter } from '@ngrx/entity';
 import { createReducer, Action, on } from '@ngrx/store';
 import * as actions from '../actions/list.actions';
-import { Optional } from '@angular/core';
+
 
 
 export interface ListEntity {
@@ -33,14 +33,14 @@ const initialState = adapter.getInitialState();
 
 const reducerFunction = createReducer(
   initialState,
-  on(actions.loadGivingDataSucceeded, (s, a) => adapter.setAll(a.payload, s)),
-  on(actions.completedCard, (s, a) => adapter.updateOne({ id: a.payload.id, changes: { cardCompleted: !a.payload.cardCompleted } }, s)),
-  on(actions.completedGift, (s, a) => adapter.updateOne({ id: a.payload.id, changes: { giftCompleted: !a.payload.giftCompleted } }, s)),
   on(actions.addedGivingItem, (s, a) => adapter.addOne(a.payload, s)),
+  on(actions.loadGivingDataSucceeded, (s, a) => adapter.setAll(a.payload, s)),
   on(actions.addedGivingSucceeded, (s, a) => {
     const tempState = adapter.removeOne(a.tempId, s);
     return adapter.addOne(a.payload, tempState);
-  })
+  }),
+  on(actions.completedCard, (s, a) => adapter.updateOne({ id: a.payload.id, changes: { cardCompleted: !a.payload.cardCompleted } }, s)),
+  on(actions.completedGift, (s, a) => adapter.updateOne({ id: a.payload.id, changes: { giftCompleted: !a.payload.giftCompleted } }, s)),
 );
 
 export function reducer(state: GivingState = initialState, action: Action): GivingState {

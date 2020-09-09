@@ -38,14 +38,14 @@ const selectGivingListUnfiltered = createSelector(
       return -1;
     }
     return 0;
-  })]// .map(r => ({ ...r }))] as models.GivingListItem[]
+  }).map(r => ({ ...r, tempId: r.id.startsWith('TEMP') }))] as models.GivingListItem[]
 );
 
 
 // TODO: We need a selector that returns a MediaListItem[]
 
 export const getUpcommingList = createSelector(
-  selectAllListItems,
+  selectGivingListUnfiltered,
   (list) => {
     return list.filter(item => item.date >= new Date());
   }

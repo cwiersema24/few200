@@ -38,8 +38,8 @@ import { GivingModule } from './features/giving/giving.module';
   ],
   imports: [
     BrowserModule,
-    MediaModule,
     GivingModule,
+    MediaModule,
     AppRoutingModule,
     StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument(),
